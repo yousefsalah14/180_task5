@@ -1,0 +1,25 @@
+USE market;
+
+INSERT INTO `thecamp_market`(`id`, `product_name`, `product_value`, `product_quantity`, `recored_date`) 
+VALUES (1,'Pepsi',5,20,'2022-03-21');
+
+INSERT INTO `thecamp_market`(`id`, `product_name`, `product_value`, `product_quantity`, `recored_date`) 
+VALUES (2,'coca',5,20,'2022-03-21');
+
+INSERT INTO `thecamp_market`(`id`, `product_name`, `product_value`, `product_quantity`, `recored_date`) 
+VALUES (3,'water',5,20,'2022-03-21');
+
+INSERT INTO `thecamp_market_sells`(`id`, `product_id`, `sales_quantity`, `recorded_date`) 
+VALUES (1,1,3,'2022-03-21');
+INSERT INTO `thecamp_market_sells`(`id`, `product_id`, `sales_quantity`, `recorded_date`) 
+VALUES (2,2,3,'2022-03-21');
+INSERT INTO `thecamp_market_sells`(`id`, `product_id`, `sales_quantity`, `recorded_date`) 
+VALUES (3,3,3,'2022-03-21');
+
+SELECT m.id, m.product_name, m.product_value, m.product_quantity, m.recored_date, s.sales_quantity
+FROM thecamp_market m
+LEFT JOIN thecamp_market_sells s ON m.id = s.product_id;
+
+SELECT m.id, SUM(s.sales_quantity) AS total_quantity_sold
+FROM thecamp_market m
+LEFT JOIN thecamp_market_sells s ON m.id = s.product_id

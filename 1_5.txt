@@ -1,0 +1,9 @@
+use market;
+create table thecamp_market(
+    id INT  PRIMARY KEY  ,
+    product_name VARCHAR(50),
+    product_value Int ,
+    product_quantity int,
+    recored_date date
+    );
+   
